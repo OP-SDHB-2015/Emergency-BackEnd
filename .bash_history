@@ -51,3 +51,46 @@ git push origin master
 ssh -T -p 443 git@ssh.github.com
 su
 exit
+sudo
+gem list
+clear
+gem install gcm
+ls
+git status
+git add .
+git commit -m "Installed spacialdb gem"
+git push origin master
+clear
+exit
+ls
+rails new SDHB-Server-App
+gem list
+ls
+exit
+gem list
+ls
+exit
+ls
+rails new
+rails new SDHB-Server
+clear
+ls
+rm SDHB-Server/
+rm -rf SDHB-Server/
+ls
+sudo
+sudo 
+su
+gem list
+su
+gem environment
+sudo rails new SDHB-Server-pp
+rails new SDHB-Server-App
+bundle show SDHB-Rails-App
+cd SDHB-Server-App/
+ls
+rails server
+ls
+cd SDHB-Server-App/
+ls
+bin/rails generate controller welcome index
