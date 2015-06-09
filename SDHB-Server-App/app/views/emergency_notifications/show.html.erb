@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @emergency_notification.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @emergency_notification.message %>
+</p>
+
+<%= link_to 'Edit', edit_emergency_notification_path(@emergency_notification) %> |
+<%= link_to 'Back', emergency_notifications_path %>

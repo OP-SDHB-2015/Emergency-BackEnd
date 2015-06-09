@@ -94,3 +94,20 @@ ls
 cd SDHB-Server-App/
 ls
 bin/rails generate controller welcome index
+ls
+bin/rails generate controller welcome index
+ls
+cd SDHB-Server-App/
+ls
+bin/rails generate controller welcome index
+rails server
+ls
+cd ..
+ls
+cs ..
+ls
+git status
+git add .
+git commit -m "Welcome tutorial"
+git push origin master
+exit
