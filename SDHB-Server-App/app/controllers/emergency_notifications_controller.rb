@@ -25,16 +25,27 @@ class EmergencyNotificationsController < ApplicationController
   # POST /emergency_notifications.json
   def create
     @emergency_notification = EmergencyNotification.new(emergency_notification_params)
+	
+	logger.error(@emergency_notification.message)
+	logger.error(@emergency_notification.title)
 
     respond_to do |format|
       if @emergency_notification.save
-        format.html { redirect_to @emergency_notification, notice: 'Emergency notification was successfully created.' }
+        format.html { redirect_to @emergency_notification, notice: 'Emergency notification was successfully pushed.' }
         format.json { render :show, status: :created, location: @emergency_notification }
       else
         format.html { render :new }
         format.json { render json: @emergency_notification.errors, status: :unprocessable_entity }
       end
     end
+#---------------------Sending Notification To GCM using "gcm" gem-------------------------------------------------------
+	gcm = GCM.new("AIzaSyAEP2Sk1M2-aFax16by2LHozu1RWNoHE0c")
+	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, notId:rand(1...1000)}, collapse_key: "updated_score",
+	title: @emergency_notification.title}
+
+	registration_ids = ["PUT DEVICE ID HERE"]
+	response = gcm.send(registration_ids, options)
+#-----------------------------------------------------------------------------------------------------------------------	
   end
 
   # PATCH/PUT /emergency_notifications/1
