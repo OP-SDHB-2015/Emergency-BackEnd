@@ -111,3 +111,48 @@ git add .
 git commit -m "Welcome tutorial"
 git push origin master
 exit
+rail generate
+ls
+cd SDHB-Server-App/
+rails generate
+ls
+bin/rails generate scaffold Emergency-Notification title:string message:string
+ls
+cd..
+ls
+cd ..
+ls
+git add .
+git commit -m "Scaffolded everything for the notification setup"
+git push origin master
+git status
+pwd
+ls
+git add .
+git commit -m "First use of GCM gem in emergency_notification controller"
+git push origin master
+exit
+rails server
+ls
+bin/rails server
+ls
+cd RAILS
+ls
+pwd
+rails s
+ls
+cd SDHB-Server-App/
+rails server
+bin/rake db:migrate RAILS_ENV=development
+rails server
+ls
+cd SDHB-Server-App/
+bin/rails s
+ls
+cd ..
+ls
+cd SDHB-Server-App/
+ls
+rails s
+killall -9 rails
+killall -9 SDHB-Server-App

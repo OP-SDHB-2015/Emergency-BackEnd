@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :emergency_notifications
 
   get 'welcome/index'
+  post 'emergency_notifications' => 'emergency_notifications#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
