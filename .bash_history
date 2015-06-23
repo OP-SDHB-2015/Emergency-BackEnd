@@ -156,3 +156,31 @@ ls
 rails s
 killall -9 rails
 killall -9 SDHB-Server-App
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
+ls
+git status
+git add .
+git commit -m "Commit before fixing gem dependencies"
+git push origin master
+ls
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
+ls
+bin/rails s
+cd SDHB-Server-App/
+rails s
+gem
+gem list
+gem environment
+rails s
+ls
+rails s
+gem list
+bundle install
+sudo bundle install
+ls
+cd SDHB-Server-App/
+ls
+sudo bundle install
+restart
+restart --help
+exit

@@ -1,5 +1,3 @@
-require 'gcm'
-
 class EmergencyNotificationsController < ApplicationController
   before_action :set_emergency_notification, only: [:show, :edit, :update, :destroy]
 
@@ -45,7 +43,7 @@ class EmergencyNotificationsController < ApplicationController
 	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, notId:rand(1...1000)}, collapse_key: "updated_score",
 	title: @emergency_notification.title}
 
-	registration_ids = ["APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q"]
+	registration_ids = ["APA91bEx_OaRh0c9wmQ9_5y9yKHGes-2S_-PyMBPxA1IlxGlFPpkMvBVyfrbHyc1nq2_cYcS6scuBaAFj4IiYiQYfMLZdJA1u0Aa1TimBPrhL7vG2P2a0mgEFClAZX1FfyZTr4UPGSDO_93wADa_9j7tDaxPEQrWUg"]
 	response = gcm.send(registration_ids, options)
 	
 	#curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
