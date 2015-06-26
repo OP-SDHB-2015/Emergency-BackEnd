@@ -184,3 +184,31 @@ sudo bundle install
 restart
 restart --help
 exit
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
+ls
+cd SDHB-Server-App/
+rails s
+ls
+cd ..
+ls
+git add .
+git commit -m "Test Functioning"
+git push origin master
+ls
+cd SDHB-Server-App/
+rails s
+ls
+cd SDHB-Server-App/
+ls
+rails s
+ls
+rails s
+rake db:reset
+rails s
+touch db/seeds.rb
+rails s
+rake db:drop
+db:create
+rake db:create
+rake db:migrate
+rails s
