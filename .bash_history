@@ -212,3 +212,39 @@ db:create
 rake db:create
 rake db:migrate
 rails s
+cd SDHB-Server-App/
+rails s
+df -i
+df -h
+lsof / | grep deleted
+cd ..
+ls
+sudo apt-get install ncdu
+df -h
+rails s
+cd SDHB-Server-App/
+rails s
+db:migrate
+bin/rake db:migrate RAILS_ENV=development
+rails s
+ls
+cd ..
+ls
+git add .
+git commit -m 
+git commit -m "few small tweaks"
+git push origin master
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
+clear
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
+curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....x2", "message":"please work"}}'
+du --all --one-file-system / | awk '{if($1 > 102400) print int($1/1024) "MB" " " $2 }'
+cd SDh
+cd SD
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+ls
+cd SDHB-Server-App
+rails s
