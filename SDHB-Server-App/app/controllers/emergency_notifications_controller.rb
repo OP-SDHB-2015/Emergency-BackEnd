@@ -1,5 +1,6 @@
 class EmergencyNotificationsController < ApplicationController
   before_action :set_emergency_notification, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /emergency_notifications
   # GET /emergency_notifications.json
@@ -43,15 +44,29 @@ class EmergencyNotificationsController < ApplicationController
 	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, notId:rand(1...1000)}, collapse_key: "updated_score",
 	title: @emergency_notification.title}
 
-	registration_ids = ["APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q","APA91bEx_OaRh0c9wmQ9_5y9yKHGes-2S_-PyMBPxA1IlxGlFPpkMvBVyfrbHyc1nq2_cYcS6scuBaAFj4IiYiQYfMLZdJA1u0Aa1TimBPrhL7vG2P2a0mgEFClAZX1FfyZTr4UPGSDO_93wADa_9j7tDaxPEQrWUg"]
+	registration_ids = ["APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q"]
 	response = gcm.send(registration_ids, options)
 	
 	#curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
 	#Nexus 7 ID: APA91bEx_OaRh0c9wmQ9_5y9yKHGes-2S_-PyMBPxA1IlxGlFPpkMvBVyfrbHyc1nq2_cYcS6scuBaAFj4IiYiQYfMLZdJA1u0Aa1TimBPrhL7vG2P2a0mgEFClAZX1FfyZTr4UPGSDO_93wADa_9j7tDaxPEQrWUg
 	#Weily S3: APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q
+	#Foster S3: APA91bGXOUN2izNliT7As7CQQOgJPQb_2tkROCFuxolgRhPqmduRFqKxx159OQW9jj84uyIAFUG9qRPdsFTRFD1pqfm2jyIi-Q5NzWu1bhi5hpNjvXgPqanqo9BU4cKJ9hZ4uxSNrfIu
 #-----------------------------------------------------------------------------------------------------------------------	
   end
-
+  
+  # POST /emergency_notifications/registerID
+  # POST /emergency_notifications/registerID.json
+  #----------------Method for registering the ID------------------------------------------------------------------------
+  def registerID
+	p "POST successful"
+	render :text => params[:registrationID]
+	fName = "RegIDs.txt"
+	file = File.open(fName, "a")
+	file.puts params[:registrationID] + ", "
+	file.close
+  end
+  #---------------------------------------------------------------------------------------------------------------------
+  
   # PATCH/PUT /emergency_notifications/1
   # PATCH/PUT /emergency_notifications/1.json
   def update

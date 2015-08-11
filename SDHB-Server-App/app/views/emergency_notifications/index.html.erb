@@ -1,7 +1,46 @@
-<h1>Send Notification</h1>
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<form action="/emergency_notifications" method="POST">
-	Emergency Name: <input type="text" name="emergency_notification[title]"/></br>
-	Emergency Description: <input type="textarea" name="emergency_notification[message]"/></br>
-	<button>Send Emergency</button>
-</form>
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<style>
+			
+			body
+			{
+				margin: auto;
+				width: 100%;
+				padding: 10px;
+				text-align: center;
+			}
+			
+			.input-group
+			{
+				width: 300px;
+				margin: auto;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="jumbotron">Send a Notification</h1>
+		
+		<form action="/emergency_notifications" method="POST" class="form-horizontal">
+			<h3>New Emergency</h3>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Title</span>
+				<input type="text" name="emergency_notification[title]" class="form-control" placeholder="Title" aria-describedby="basic-addon1"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon2">Description</span>
+				<input type="textarea" name="emergency_notification[message]" class="form-control" placeholder="Description" aria-describedby="basic-addon1"/>
+			</div>
+			<button class="btn btn-primary">Send Emergency</button>
+		</form>
+	<body>
+</html>
