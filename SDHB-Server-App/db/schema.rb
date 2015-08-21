@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609012137) do
+ActiveRecord::Schema.define(version: 20150814023502) do
 
   create_table "emergency_notifications", force: true do |t|
     t.string   "title"
     t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.integer  "staffID"
+    t.string   "lastName"
+    t.string   "firstName"
+    t.string   "deviceID"
+    t.boolean  "authenticated"
+    t.string   "region"
+    t.integer  "group"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

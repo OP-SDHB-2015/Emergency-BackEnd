@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  staffID: 1
-  lastName: MyString
-  firstName: MyString
-  deviceID: MyString
-  authenticated: false
-  region: MyString
+  staffID: 
+  lastName: 
+  firstName: 
+  deviceID: 
+  authenticated: 
+  region: 
   group: 1
 
 two:
-  staffID: 1
-  lastName: MyString
-  firstName: MyString
-  deviceID: MyString
-  authenticated: false
-  region: MyString
+  staffID: 
+  lastName: 
+  firstName: 
+  deviceID: 
+  authenticated: 
+  region: 
   group: 1

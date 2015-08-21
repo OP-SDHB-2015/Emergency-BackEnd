@@ -54,19 +54,6 @@ class EmergencyNotificationsController < ApplicationController
 #-----------------------------------------------------------------------------------------------------------------------	
   end
   
-  # POST /emergency_notifications/registerID
-  # POST /emergency_notifications/registerID.json
-  #----------------Method for registering the ID------------------------------------------------------------------------
-  def registerID
-	p "POST successful"
-	render :text => params[:registrationID]
-	fName = "RegIDs.txt"
-	file = File.open(fName, "a")
-	file.puts params[:registrationID] + ", "
-	file.close
-  end
-  #---------------------------------------------------------------------------------------------------------------------
-  
   # PATCH/PUT /emergency_notifications/1
   # PATCH/PUT /emergency_notifications/1.json
   def update
