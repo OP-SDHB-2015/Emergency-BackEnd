@@ -1,0 +1,25 @@
+h1
+{
+	text-align: center;
+}
+h3
+{
+	text-align: center;
+}
+#main
+{
+	text-align:center;
+	margin:auto;
+}
+#title
+{
+	width: 600px;
+	text-align:center;
+	margin:auto;
+}
+#description
+{
+	width: 600px;
+	text-align:center;
+	margin:auto;
+}

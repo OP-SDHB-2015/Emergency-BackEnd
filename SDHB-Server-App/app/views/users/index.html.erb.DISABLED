@@ -1,0 +1,70 @@
+
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<style>
+			
+			body
+			{
+				margin: auto;
+				width: 100%;
+				padding: 10px;
+				text-align: center;
+			}
+			
+			.input-group
+			{
+				width: 300px;
+				margin: auto;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+<h1 class="jumbotron">Listing users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Staffid</th>
+      <th>Lastname</th>
+      <th>Firstname</th>
+      <th>Deviceid</th>
+      <th>Authenticated</th>
+      <th>Region</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.staffID %></td>
+        <td><%= user.lastName %></td>
+        <td><%= user.firstName %></td>
+        <td><%= user.deviceID %></td>
+        <td><%= user.authenticated %></td>
+        <td><%= user.region %></td>
+        <td><%= user.group %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
+<body>
+</html>

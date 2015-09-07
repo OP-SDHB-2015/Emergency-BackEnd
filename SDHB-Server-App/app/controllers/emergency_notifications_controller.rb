@@ -44,7 +44,7 @@ class EmergencyNotificationsController < ApplicationController
 	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, notId:rand(1...1000)}, collapse_key: "updated_score",
 	title: @emergency_notification.title}
 
-	registration_ids = ["APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q"]
+	registration_ids = ["APA91bGL1YxipOsaeZTg3IkdCWEx5OajR0eYUnPnWZHSdJtSSbvSJr7TpYMS0xO1zNc74e0hSJbyvNF6uhzteYfcFDB_ssZDhoeJ_Pm_ZMMFTS99BxjH3lioyDrskdR96NPhU3Jl42bb"]
 	response = gcm.send(registration_ids, options)
 	
 	#curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'

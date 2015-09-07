@@ -248,3 +248,118 @@ rails s
 ls
 cd SDHB-Server-App
 rails s
+ls
+git status
+git add .
+git commit -m "View is functioning"
+git push origin master
+exit
+ls
+cd SDHB-Server-App
+rails s
+cd SDHB-Server-App/
+rails s'=
+;
+rails s
+ls
+cd SDHB-Server-App
+rails s
+ls
+cd SDHB-Server-App
+rails s
+ls
+cd SDHB-Server-App
+rails s
+cd SDHB-Server-App
+rails s
+cd SDHB-Server-App
+rails s
+cd SDHB-Server-App/
+ls
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails 
+rails  
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+ls
+db:reset
+rake db:reset
+rails s
+cd SDHB-Server-App/
+rails s
+cd ..
+ls
+rails console
+emergency_notifications
+Emergency_notifications
+cd SDHB-Server-App/
+emergency_notifications
+Emergency_notifications
+rails generate users staffID:integer lastName:string firstName:string deviceID:string authenticated:boolean region:string group:integer
+rails generate model users staffID:integer lastName:string firstName:string deviceID:string authenticated:boolean region:string group:integer
+ls
+git add .
+git commit -m 'Added Users Table'
+git push origin master
+raked: migrate
+rake db:migrate
+rails s
+cd SDHB-Server-App/
+rails s
+rails destroy model user
+rake db:migrate
+rake db:reset
+rake db:drop
+rake db:rollback
+rake db:migrate
+rails generate scaffold User staffID:integer, lastName:string, firstName:string, deviceID:string, authenticated:boolean, region:string, group:integer
+rails db:migrate
+rake db:migrate
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+git add .
+git status
+git add .
+git add . -A
+git commit -m
+git commit -m "Users update"
+git push origin master
+cd SDHB-Server-App/
+ls
+rail s
+rails s
+cd SDHB-Server-App/
+rail s
+rails s
+rails s -e production
+cd SDHB-Server-App/
+rails s -e production
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+rake assets:precompile RAILS_ENV=development
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
