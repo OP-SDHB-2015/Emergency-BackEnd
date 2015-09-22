@@ -363,3 +363,54 @@ cd SDHB-Server-App/
 rails s
 cd SDHB-Server-App/
 rails s
+cd SDHB-Server-App/
+ls
+cd ..
+ls
+cd SDHB-Server-App/
+ls
+cd ..
+git add .
+git commit -m "Views have been updated"
+git commit origin master
+git push origin master
+cd SDHB-Server-App/
+rails s
+dbconsole
+cd ..
+dbconsole
+rails dbconsole
+.tables
+ls
+clear
+ls
+rails dbconsole
+db
+cd ..
+ls
+rails db
+cd root/
+ls
+rails db
+ls
+cd SDHB-Server-App/
+;s
+ls
+rails db
+rails s
+ls
+rails s
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+ls
+cd ..
+ls
+cd SDHB-Server-App/
+rails s
+cd SDHB-Server-App/
+rails s
+ls
+cd SDHB-Server-App/
+rails s

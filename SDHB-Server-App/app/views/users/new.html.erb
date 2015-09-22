@@ -1,5 +1,69 @@
-<h1>New user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<!--EDIT USER VIEW-->
+<html>
+	<head>
+		<title>Edit User</title>
+	</head>
+	<body>
+	<div id="wrapper">
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a href="/">
+							Send Notification
+						</a>
+					</li>
+					<li>
+						<a href="/allusers">All Users</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /#sidebar-wrapper -->
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span id="arrow" class="glyphicon glyphicon-chevron-left"></span></a>
+						</div>
+					</div>
+				</div>
+				<h1 class="jumbotron">Edit User</h1>
+				<!--New Users Form-->
+				<form action="/users" method="POST" class="form-horizontal">
+					<h3>User Details</h3>
+					<br>
+					<!--Staff ID-->
+					<div class="input-group" id="staffID">
+						<span class="input-group-addon" id="sizing-addon1">Staff ID</span>
+						<input type="text" name="user[staffID]" class="form-control" placeholder="xxxxxx" aria-describedby="sizing-addon1">
+					</div>
+					<br>
+					<!--Last Name-->
+					<div class="input-group" id="lastName">
+						<span class="input-group-addon" id="sizing-addon1">Last Name</span>
+						<input type="text" name="user[lastName]" class="form-control" placeholder="" aria-describedby="sizing-addon1">
+					</div>
+			</div>
+			<!-- /#page-content-wrapper -->
+		</div>
+		<!-- /#wrapper -->
+		<!-- Menu Toggle Script -->
+		<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+			//Created by Alexander McNeill
+			if($("#wrapper").hasClass("toggled"))
+			{
+				$("#arrow").attr('class', "glyphicon glyphicon-chevron-right");
+			}
+			else
+			{
+				$("#arrow").attr('class', "glyphicon glyphicon-chevron-left");
+			}
+			
+		});
+		</script>
+	</body>
+</html>
