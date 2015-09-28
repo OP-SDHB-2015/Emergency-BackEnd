@@ -414,3 +414,26 @@ rails s
 ls
 cd SDHB-Server-App/
 rails s
+cd SDHB-Server-App/h
+cd SDHB-Server-App/
+rails s
+ls
+cd ..
+ls
+git add .
+git commit -m "Views and SQL"
+git push origin master
+cd SDHB-Server-App/
+ls
+rails s
+rails console
+ls
+rails s
+ls
+cd SDHB-Server-App/
+ls
+rails s
+ls
+cd SDHB-Server-App
+pwd
+rails s

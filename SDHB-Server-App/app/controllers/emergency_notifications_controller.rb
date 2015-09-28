@@ -40,18 +40,24 @@ class EmergencyNotificationsController < ApplicationController
       end
     end
 #---------------------Sending Notification To GCM using "gcm" gem-------------------------------------------------------
+	#set GCM ID for gem
 	gcm = GCM.new("AIzaSyAEP2Sk1M2-aFax16by2LHozu1RWNoHE0c")
-	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, notId:rand(1...1000)}, collapse_key: "updated_score",
-	title: @emergency_notification.title}
+	
+	#set what is sent in the notification
+	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, 
+	notId:rand(1...1000)}, collapse_key: "updated_score", title: @emergency_notification.title}
+	
+	#Querying database for what users are authenticated
+	authenticatedUsers = User.where(authenticated: true)
+	
+	#User device IDS to send the notification to
+	registration_ids = authenticatedUsers.map {|u| u.deviceID}
 
-	registration_ids = User.select(:lastname).where(authenticated: "t")#/["APA91bGL1YxipOsaeZTg3IkdCWEx5OajR0eYUnPnWZHSdJtSSbvSJr7TpYMS0xO1zNc74e0hSJbyvNF6uhzteYfcFDB_ssZDhoeJ_Pm_ZMMFTS99BxjH3lioyDrskdR96NPhU3Jl42bb"]
-	puts ["REGISTRATION ID =", registration_ids]
+	#Display IDS for debug purposes
+	puts ["REGISTRATION ID = ", registration_ids]
+	
+	#Using GCM gem to send notification
 	response = gcm.send(registration_ids, options)
-	#SELECT Deviceid FROM USERS WHERE authenticated = "t";
-	#curl -i -H "Content-type: application/json" -X POST http://128.199.73.221:3000/emergency_notifications -d '{"emergency_notification":{"title":"Testing.....", "message":"please work"}}'
-	#Nexus 7 ID: APA91bEx_OaRh0c9wmQ9_5y9yKHGes-2S_-PyMBPxA1IlxGlFPpkMvBVyfrbHyc1nq2_cYcS6scuBaAFj4IiYiQYfMLZdJA1u0Aa1TimBPrhL7vG2P2a0mgEFClAZX1FfyZTr4UPGSDO_93wADa_9j7tDaxPEQrWUg
-	#Weily S3: APA91bFipADOZyfJIYrBm6SUpNK_S6-6U0W5ckhshvQvVSphTFiH3uJZXIR3a1QdmNFlm4TXV3oAfR-dMF0cfW5RIc_s-wZXkZ44IAzpQhcD-A9aIzDx-DFltNoL5g7kfJPPrcd1edAOW1MbyKKYY_gbUrpeiteG0Q
-	#Foster S3: APA91bGXOUN2izNliT7As7CQQOgJPQb_2tkROCFuxolgRhPqmduRFqKxx159OQW9jj84uyIAFUG9qRPdsFTRFD1pqfm2jyIi-Q5NzWu1bhi5hpNjvXgPqanqo9BU4cKJ9hZ4uxSNrfIu
 #-----------------------------------------------------------------------------------------------------------------------	
   end
   

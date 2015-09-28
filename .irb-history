@@ -1,0 +1,17 @@
+authenticatedUsers = User.find_by_sql("SELECT deviceID FROM users WHERE authenticated = 't'")
+authenticatedUsers.deviceID
+clear
+User.columns
+User.all
+u = User.find(8)
+u
+u.deviceID
+User.authenticated?
+User.all.authenticated?
+users = User.where(authenticated: true)
+users.id
+users.ids
+users.authenticated
+users
+a = users.map {|u| u.deviceID}
+exit
