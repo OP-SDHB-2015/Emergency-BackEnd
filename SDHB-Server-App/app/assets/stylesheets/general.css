@@ -11,13 +11,12 @@ h3
 	text-align:center;
 	margin:auto;
 }
-#title
+#inputbox
 {
 	width: 600px;
-	text-align:center;
-	margin:auto;
+	text-align:left;
 }
-#description
+#inputboxcenter
 {
 	width: 600px;
 	text-align:center;

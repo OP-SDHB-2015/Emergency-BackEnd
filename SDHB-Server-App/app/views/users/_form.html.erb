@@ -11,42 +11,42 @@
     </div>
   <% end %>
 
-  <div class="input-group" id="staffID">
+  <div class="input-group" id="inputbox">
     <%= f.label :staffID, :class => "input-group-addon" %>
     <%= f.text_field :staffID, :class => "form-control" %>
   </div>
   <br>
-  <div  class="input-group">
+  <div  class="input-group" id="inputbox">
     <%= f.label :lastName, :class => "input-group-addon" %>
     <%= f.text_field :lastName, :class => "form-control" %>
   </div>
   <br>
-  <div class="input-group">
+  <div class="input-group" id="inputbox">
     <%= f.label :firstName, :class => "input-group-addon" %>
     <%= f.text_field :firstName, :class => "form-control" %>
   </div>
   <br>
-  <div class="input-group">
+  <div class="input-group" id="inputbox">
     <%= f.label :deviceID, :class => "input-group-addon" %>
     <%= f.text_field :deviceID, :class => "form-control" %>
   </div>
   <br>
-  <div class="input-group">
+  <div class="input-group" id="inputbox">
     <%= f.label :authenticated, :class => "input-group-addon" %>
     <%= f.text_field :authenticated, :class => "form-control" %>
   </div>
   <br>
-  <div class="input-group">
+  <div class="input-group" id="inputbox">
     <%= f.label :region, :class => "input-group-addon" %>
     <%= f.text_field :region, :class => "form-control" %>
   </div>
   <br>
-  <div class="input-group">
+  <div class="input-group" id="inputbox">
     <%= f.label :group, :class => "input-group-addon" %>
     <%= f.number_field :group, :class => "form-control" %>
   </div>
   <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary"%>
   </div>
 <% end %>
