@@ -1,5 +1,6 @@
 class EmergencyNotificationsController < ApplicationController
   before_action :set_emergency_notification, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
   skip_before_action :verify_authenticity_token
 
   # GET /emergency_notifications
