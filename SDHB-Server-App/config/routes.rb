@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'emergency_notifications' => 'emergency_notifications#create'
   post 'users/registerID' => 'users#registerID'
   get 'allusers' => 'users#index'
+  get 'emergency_notifications_group' => 'emergency_notifications#group'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
