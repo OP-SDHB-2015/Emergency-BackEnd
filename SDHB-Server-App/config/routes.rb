@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :emergency_notifications
 
   get 'emergency_notifications/index'
+  
   post 'emergency_notifications' => 'emergency_notifications#create'
+  post 'emergency_notifications_group' => 'emergency_notifications#createGroup'
   post 'users/registerID' => 'users#registerID'
+  post 'emergency_notifications/countSuccess' => 'emergency_notifications#countSuccess'
+  
   get 'allusers' => 'users#index'
   get 'emergency_notifications_group' => 'emergency_notifications#group'
 

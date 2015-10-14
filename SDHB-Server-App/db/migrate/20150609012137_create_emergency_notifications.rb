@@ -3,6 +3,7 @@ class CreateEmergencyNotifications < ActiveRecord::Migration
     create_table :emergency_notifications do |t|
       t.string :title
       t.string :message
+	  t.integer :confirmations
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 class EmergencyNotificationsController < ApplicationController
   before_action :set_emergency_notification, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, :except => ["countSuccess"]
   skip_before_action :verify_authenticity_token
 
   # GET /emergency_notifications
@@ -64,11 +64,13 @@ class EmergencyNotificationsController < ApplicationController
   
   # POST /emergency_notifications_group
   # POST /emergency_notifications_group.json
-  def create
+  def createGroup
     @emergency_notification = EmergencyNotification.new(emergency_notification_params)
 	
 	logger.error(@emergency_notification.message)
 	logger.error(@emergency_notification.title)
+	logger.error(params[:group])
+	
 
     respond_to do |format|
       if @emergency_notification.save
@@ -87,8 +89,11 @@ class EmergencyNotificationsController < ApplicationController
 	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, 
 	notId:rand(1...1000)}, collapse_key: "updated_score", title: @emergency_notification.title}
 	
+	#retrieving the users group
+	group = params[:group]
+	
 	#Querying database for what users are authenticated
-	authenticatedUsers = User.where(authenticated: true)
+	authenticatedUsers = User.where(authenticated: true, group: group)
 	
 	#User device IDS to send the notification to
 	registration_ids = authenticatedUsers.map {|u| u.deviceID}
@@ -99,6 +104,17 @@ class EmergencyNotificationsController < ApplicationController
 	#Using GCM gem to send notification
 	response = gcm.send(registration_ids, options)
 #-----------------------------------------------------------------------------------------------------------------------	
+  end
+  
+  # POST /emergency_notifications/countSuccess
+  # POST /emergency_notifications/countSuccess.json
+  def countSuccess
+	count = 0
+	code = params[:result]
+	
+	count++ if code = 1
+	end
+	p count
   end
   
   # PATCH/PUT /emergency_notifications/1
