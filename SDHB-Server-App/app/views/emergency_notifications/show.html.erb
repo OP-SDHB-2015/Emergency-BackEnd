@@ -10,5 +10,10 @@
   <%= @emergency_notification.message %>
 </p>
 
+<p>
+  <strong>Confirmations:</strong>
+  <%= @emergency_notification.confirmations %>
+</p>
+
 <%= link_to 'Edit', edit_emergency_notification_path(@emergency_notification) %> |
 <%= link_to 'Back', emergency_notifications_path %>

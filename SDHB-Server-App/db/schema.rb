@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150928035018) do
   create_table "emergency_notifications", force: true do |t|
     t.string   "title"
     t.string   "message"
+    t.integer  "confirmations"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -109,12 +109,8 @@ class EmergencyNotificationsController < ApplicationController
   # POST /emergency_notifications/countSuccess
   # POST /emergency_notifications/countSuccess.json
   def countSuccess
-	count = 0
-	code = params[:result]
-	
-	count++ if code = 1
-	end
-	p count
+	#@emergencyNotification.update_counters(@emergencyNotification_id, :confirmations => 1)
+	EmergencyNotification.last.increment!(:confirmations)
   end
   
   # PATCH/PUT /emergency_notifications/1

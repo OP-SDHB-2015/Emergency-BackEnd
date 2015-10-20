@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   post 'emergency_notifications/countSuccess' => 'emergency_notifications#countSuccess'
   
   get 'allusers' => 'users#index'
+  get 'authenticate_users' => 'users#authenticate'
+  get 'allnotifications' => 'emergency_notifications#list'
   get 'emergency_notifications_group' => 'emergency_notifications#group'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

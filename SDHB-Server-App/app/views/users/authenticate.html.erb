@@ -1,13 +1,19 @@
-<!--SEND GROUP NOTIFICATION VIEW-->
-<html>
+<!--ALL USERS VIEW-->
+<html lang="en">
 	<head>
-		<title>Send Group Notification</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>All Users</title>
 	</head>
 	<body>
 		<div id="wrapper">
 			<!-- Sidebar -->
 			<div id="sidebar-wrapper">
 				<ul class="sidebar-nav">
+					<ul class="sidebar-nav">
 					<li class="sidebar-brand">
 						<a href="/">
 							Send Notification
@@ -26,6 +32,7 @@
 						<%= link_to "Sign Out", destroy_admin_session_path, :method => :delete %>
 					</li>
 				</ul>
+				</ul>
 			</div>
 			<!-- /#sidebar-wrapper -->
 			<!-- Page Content -->
@@ -37,29 +44,38 @@
 						</div>
 					</div>
 				</div>
-				<div id="main">
-					<h1 class="jumbotron">Send a Group Notification</h1>
-					<!--Send Notification Button-->
-					<form action="/emergency_notifications_group" method="POST" class="form-horizontal">
-						<h3>New Emergency</h3>
-						<br>
-						<%= select_tag "group", options_from_collection_for_select(User.all.to_a.uniq{ |o| o.group }, :id, :group)%>
-						<br>
-						<br>
-						<div class="input-group" id="inputboxcenter">
-							<span class="input-group-addon" id="sizing-addon1">Title</span>
-							<input type="text" name="emergency_notification[title]" class="form-control" placeholder="Title" aria-describedby="sizing-addon1">
-						</div>
-						<br>
-						<div class="input-group" id="inputboxcenter">
-							<span class="input-group-addon" id="sizing-addon2">Description</span>
-							<input type="textarea" name="emergency_notification[message]" class="form-control" placeholder="Description" aria-describedby="sizing-addon2">
-						</div>
-						<br>
-						<button class="btn btn-primary" id="buttonsend">Send Emergency</button>
-					</form>
-				</div>
-			</div>
+			<h1 class="jumbotron">Authenticate users</h1>
+			
+			<table class="table table-striped">
+			  <thead>
+				<tr>
+				  <th>Staffid</th>
+				  <th>Lastname</th>
+				  <th>Firstname</th>
+				  <th>Deviceid</th>
+				  <th>Authenticated</th>
+				  <th>Region</th>
+				  <th>Group</th>
+				  <th colspan="3"></th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<% @users.each do |user| %>
+				  <tr>
+					<td><%= user.staffID %></td>
+					<td><%= user.lastName %></td>
+					<td><%= user.firstName %></td>
+					<td><div id="deviceID"><%= user.deviceID %></div></td>
+					<td><%= user.authenticated %></td>
+					<td><%= user.region %></td>
+					<td><%= user.group %></td>
+					<td><%= link_to 'Edit', edit_user_path(user) %></td>
+					<td><%= link_to 'Delete User', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				  </tr>
+				<% end %>
+			  </tbody>
+			</table>
+		
 			<!-- /#page-content-wrapper -->
 
 		</div>
