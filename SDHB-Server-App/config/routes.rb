@@ -4,18 +4,17 @@ Rails.application.routes.draw do
 
   resources :emergency_notifications
 
-  get 'emergency_notifications/index'
-  
   post 'emergency_notifications' => 'emergency_notifications#create'
   post 'emergency_notifications_group' => 'emergency_notifications#createGroup'
   post 'users/registerID' => 'users#registerID'
   post 'emergency_notifications/countSuccess' => 'emergency_notifications#countSuccess'
-  
+
+  get 'emergency_notifications/index'
   get 'allusers' => 'users#index'
   get 'authenticate_users' => 'users#authenticate'
   get 'allnotifications' => 'emergency_notifications#list'
   get 'emergency_notifications_group' => 'emergency_notifications#group'
-  
+  get 'delete_all' => 'emergency_notifications#clear_notifications'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

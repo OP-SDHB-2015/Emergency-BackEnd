@@ -23,96 +23,95 @@ class EmergencyNotificationsController < ApplicationController
   def edit
   end
 
+  # GET /clear_notifications
+  def clear_notifications
+    #Delete everything in the notifications table
+    EmergencyNotification.delete_all
+    #redirect back to the all notifications view
+	  redirect_to :action => 'list'
+  end
+
   # POST /emergency_notifications
   # POST /emergency_notifications.json
   def create
+    #create new Notification with parameters passed in
     @emergency_notification = EmergencyNotification.new(emergency_notification_params)
-	
-	logger.error(@emergency_notification.message)
-	logger.error(@emergency_notification.title)
+    #print notification details to logs and console for debug purposes
+  	logger.error(@emergency_notification.message)
+  	logger.error(@emergency_notification.title)
+    #save notification
+    @emergency_notification.save
+    #redirect back to the all notifications view
+    redirect_to :action => 'list'
 
-    respond_to do |format|
-      if @emergency_notification.save
-        format.html { redirect_to @emergency_notification, notice: 'Emergency notification was successfully pushed.' }
-        format.json { render :show, status: :created, location: @emergency_notification }
-      else
-        format.html { render :new }
-        format.json { render json: @emergency_notification.errors, status: :unprocessable_entity }
-      end
-    end
 #---------------------Sending Notification To GCM using "gcm" gem-------------------------------------------------------
 	#set GCM ID for gem
 	gcm = GCM.new("AIzaSyAEP2Sk1M2-aFax16by2LHozu1RWNoHE0c")
-	
+
 	#set what is sent in the notification
-	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, 
+	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message,
 	notId:rand(1...1000)}, collapse_key: "updated_score", title: @emergency_notification.title}
-	
+
 	#Querying database for what users are authenticated
 	authenticatedUsers = User.where(authenticated: true)
-	
+
 	#User device IDS to send the notification to
 	registration_ids = authenticatedUsers.map {|u| u.deviceID}
 
 	#Display IDS for debug purposes
 	puts ["REGISTRATION ID = ", registration_ids]
-	
+
 	#Using GCM gem to send notification
 	response = gcm.send(registration_ids, options)
-#-----------------------------------------------------------------------------------------------------------------------	
+#-----------------------------------------------------------------------------------------------------------------------
   end
-  
+
   # POST /emergency_notifications_group
   # POST /emergency_notifications_group.json
   def createGroup
+    #create new Notification with parameters passed in
     @emergency_notification = EmergencyNotification.new(emergency_notification_params)
-	
-	logger.error(@emergency_notification.message)
-	logger.error(@emergency_notification.title)
-	logger.error(params[:group])
-	
+    #print notification details to logs and console for debug purposes
+  	logger.error(@emergency_notification.message)
+  	logger.error(@emergency_notification.title)
+  	logger.error(params[:group])
+    #save notification
+    @emergency_notification.save
+    #redirect back to the all notifications view
+    redirect_to :action => 'list'
 
-    respond_to do |format|
-      if @emergency_notification.save
-        format.html { redirect_to @emergency_notification, notice: 'Emergency notification was successfully pushed.' }
-        format.json { render :show, status: :created, location: @emergency_notification }
-      else
-        format.html { render :new }
-        format.json { render json: @emergency_notification.errors, status: :unprocessable_entity }
-      end
-    end
 #---------------------Sending Notification To GCM using "gcm" gem-------------------------------------------------------
 	#set GCM ID for gem
 	gcm = GCM.new("AIzaSyAEP2Sk1M2-aFax16by2LHozu1RWNoHE0c")
-	
+
 	#set what is sent in the notification
-	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message, 
+	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message,
 	notId:rand(1...1000)}, collapse_key: "updated_score", title: @emergency_notification.title}
-	
+
 	#retrieving the users group
 	group = params[:group]
-	
+
 	#Querying database for what users are authenticated
 	authenticatedUsers = User.where(authenticated: true, group: group)
-	
+
 	#User device IDS to send the notification to
 	registration_ids = authenticatedUsers.map {|u| u.deviceID}
 
 	#Display IDS for debug purposes
 	puts ["REGISTRATION ID = ", registration_ids]
-	
+
 	#Using GCM gem to send notification
 	response = gcm.send(registration_ids, options)
-#-----------------------------------------------------------------------------------------------------------------------	
+#-----------------------------------------------------------------------------------------------------------------------
   end
-  
+
   # POST /emergency_notifications/countSuccess
   # POST /emergency_notifications/countSuccess.json
   def countSuccess
-	#@emergencyNotification.update_counters(@emergencyNotification_id, :confirmations => 1)
-	EmergencyNotification.last.increment!(:confirmations)
+  	#When POST from app is received increment the confirmations counter on the last notification by +1
+  	EmergencyNotification.last.increment!(:confirmations)
   end
-  
+
   # PATCH/PUT /emergency_notifications/1
   # PATCH/PUT /emergency_notifications/1.json
   def update

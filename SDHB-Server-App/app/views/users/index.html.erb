@@ -68,17 +68,16 @@
 					<td>
 						<% if user.authenticated? %>
 						  <%= form_for user do |f| %>
-							<%= f.hidden_field :authenticated, value: false %>
-							<%= f.submit 'Deauthenticate' %>
+							<%= f.check_box :authenticated, value: false %>
+							<%= f.submit 'Update' %>
 						  <% end %>
 						  <% else %>
 						  <%= form_for user do |f| %>
-							<%= f.hidden_field :authenticated, value: true %>
-							<%= f.submit 'Authenticate' %>
+							<%= f.check_box :authenticated, value: true %>
+							<%= f.submit 'Update' %>
 						  <% end %>
 						<% end %>
 					</td>
-					<td><%= user.authenticated %></td>	
 					<td><%= user.region %></td>
 					<td><%= user.group %></td>
 					<td><%= link_to 'Edit', edit_user_path(user) %></td>
@@ -88,7 +87,7 @@
 			  </tbody>
 			</table>
 			<br>
-			
+
 			<!-- /#page-content-wrapper -->
 
 		</div>
@@ -107,7 +106,7 @@
 			{
 				$("#arrow").attr('class', "glyphicon glyphicon-chevron-left");
 			}
-			
+
 		});
 		</script>
 	</body>

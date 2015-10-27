@@ -1,4 +1,4 @@
-<!--ALL USERS VIEW-->
+<!--ALL NOTIFICATIONS VIEW-->
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -46,7 +46,7 @@
 			<table class="table table-striped">
 			  <thead>
 				<tr>
-				  <th>Date Sent</th>	
+				  <th>Date Sent</th>
 				  <th>Title</th>
 				  <th>Description</th>
 				  <th>Confirmations</th>
@@ -65,7 +65,8 @@
 			  </tbody>
 			</table>
 			<br>
-			
+			<%= button_to "Clear Notifications", {:controller=>"emergency_notifications", :action => "clear_notifications"} , :method => "get" %>
+
 			<!-- /#page-content-wrapper -->
 
 		</div>
@@ -84,7 +85,7 @@
 			{
 				$("#arrow").attr('class', "glyphicon glyphicon-chevron-left");
 			}
-			
+
 		});
 		</script>
 	</body>
