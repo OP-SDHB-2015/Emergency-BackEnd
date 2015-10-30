@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post 'emergency_notifications' => 'emergency_notifications#create'
   post 'emergency_notifications_group' => 'emergency_notifications#createGroup'
+  post 'emergency_notifications_region' => 'emergency_notifications#createRegion'
   post 'users/registerID' => 'users#registerID'
   post 'emergency_notifications/countSuccess' => 'emergency_notifications#countSuccess'
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get 'authenticate_users' => 'users#authenticate'
   get 'allnotifications' => 'emergency_notifications#list'
   get 'emergency_notifications_group' => 'emergency_notifications#group'
+  get 'emergency_notifications_region' => 'emergency_notifications#region'
   get 'delete_all' => 'emergency_notifications#clear_notifications'
 
   # The priority is based upon order of creation: first created -> highest priority.

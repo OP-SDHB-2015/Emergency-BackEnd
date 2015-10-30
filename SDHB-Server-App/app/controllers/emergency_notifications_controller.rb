@@ -105,6 +105,45 @@ class EmergencyNotificationsController < ApplicationController
 #-----------------------------------------------------------------------------------------------------------------------
   end
 
+  # POST /emergency_notifications_region
+  # POST /emergency_notifications_region.json
+  def createRegion
+    #create new Notification with parameters passed in
+    @emergency_notification = EmergencyNotification.new(emergency_notification_params)
+    #print notification details to logs and console for debug purposes
+  	logger.error(@emergency_notification.message)
+  	logger.error(@emergency_notification.title)
+  	logger.error(params[:region])
+    #save notification
+    @emergency_notification.save
+    #redirect back to the all notifications view
+    redirect_to :action => 'list'
+
+#---------------------Sending Notification To GCM using "gcm" gem-------------------------------------------------------
+	#set GCM ID for gem
+	gcm = GCM.new("AIzaSyAEP2Sk1M2-aFax16by2LHozu1RWNoHE0c")
+
+	#set what is sent in the notification
+	options = {data:{title: @emergency_notification.title, message: @emergency_notification.message,
+	notId:rand(1...1000)}, collapse_key: "updated_score", title: @emergency_notification.title}
+
+	#retrieving the users region
+	region = params[:region]
+  puts [region]
+	#Querying database for what users are authenticated
+	authenticatedUsers = User.where(authenticated: true, region: region)
+
+	#User device IDS to send the notification to
+	registration_ids = authenticatedUsers.map {|u| u.deviceID}
+
+	#Display IDS for debug purposes
+	puts ["REGISTRATION ID = ", registration_ids]
+
+	#Using GCM gem to send notification
+	response = gcm.send(registration_ids, options)
+#-----------------------------------------------------------------------------------------------------------------------
+  end
+
   # POST /emergency_notifications/countSuccess
   # POST /emergency_notifications/countSuccess.json
   def countSuccess

@@ -17,6 +17,9 @@
 						<a href="/emergency_notifications_group">Send Group Notification</a>
 					</li>
 					<li>
+						<a href="/emergency_notifications_region">Send Region Notification</a>
+					</li>
+					<li>
 						<a href="/allusers">All Users</a>
 					</li>
 					<li>
@@ -43,7 +46,7 @@
 					<form action="/emergency_notifications_group" method="POST" class="form-horizontal">
 						<h3>New Emergency</h3>
 						<br>
-						<%= select_tag "group", options_from_collection_for_select(User.all.to_a.uniq{ |o| o.group }, :id, :group)%>
+						<%= select_tag "group", options_from_collection_for_select(User.all.to_a.uniq{ |o| o.group }, :group, :group)%>
 						<br>
 						<br>
 						<div class="input-group" id="inputboxcenter">
@@ -78,7 +81,7 @@
 			{
 				$("#arrow").attr('class', "glyphicon glyphicon-chevron-left");
 			}
-			
+
 		});
 		</script>
 	</body>
